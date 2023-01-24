@@ -1,0 +1,35 @@
+.filter {
+  font-family: sans-serif;
+  min-width: 199px;
+  height: fit-content;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 24px;
+
+  .tab {
+    padding: 0 24px 0 24px;
+    li {
+      color: #6c7072;
+      line-height: 24px;
+      list-style-type: none;
+      cursor: pointer;
+      &:last-child {
+        margin-bottom: 16px;
+      }
+    }
+    hr {
+      height: 1px;
+      background-color: #e3e5e5;
+      border: none;
+    }
+    .tab-title {
+      font-size: 16px;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      h4 {
+        font-weight: 400;
+      }
+    }
+  }
+}

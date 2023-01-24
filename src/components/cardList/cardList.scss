@@ -1,0 +1,15 @@
+.card-list {
+  margin: 122px 40px 0 40px;
+  background-color: #f2f4f5;
+  padding: 0 24px;
+
+  h4 {
+  }
+  .container {
+    gap: 20px;
+    .cards {
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+  }
+}

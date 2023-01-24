@@ -1,0 +1,27 @@
+.pagination {
+  gap: 19px;
+  margin-bottom: 55px;
+  align-items: center;
+  justify-content: center;
+  .number {
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #cdcfd0;
+    width: 32px;
+    height: 32px;
+  }
+  .active {
+    background: #e8282b;
+  }
+  .arrow {
+    cursor: pointer;
+    color: #979c9e;
+    font-size: 30px;
+  }
+}
