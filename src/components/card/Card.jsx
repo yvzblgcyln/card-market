@@ -4,7 +4,7 @@ function Card({ imgUrl, title, price }) {
     <div className="card df-col">
       <img src={imgUrl} alt="" />
       <div className="sub-text df-row">
-        <div className="price">&euro; {price}</div>
+        <div className="price">&euro; {price}.00</div>
         {title.toLowerCase() === "market" ? <button>Buy</button> : <button>Sell</button>}
       </div>
     </div>

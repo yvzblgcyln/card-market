@@ -1,15 +1,10 @@
 import "./pagination.scss";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { useEffect, useState } from "react";
 
-function Pagination({ filtered, setPageFilter }) {
-  const [activePage, setActivePage] = useState(0);
+function Pagination({ filtered, setActivePage, activePage }) {
   let pageCount = Math.ceil(filtered.length / 10);
   let array = Array(pageCount).fill(0);
 
-  useEffect(() => {
-    setPageFilter(filtered.slice(activePage * 10, activePage * 10 + 10));
-  }, [activePage]);
   return (
     <div className="pagination df-row">
       {pageCount > 1 && (

@@ -4,35 +4,42 @@ import Card from "../card/Card";
 import Pagination from "../pagination/Pagination";
 import { useContext, useEffect, useState } from "react";
 import DataContext from "../../context/DataContext";
+import FilterDataContext from "../../context/FilterDataContext";
 
 function CardList({ title }) {
   const { market, myCards } = useContext(DataContext);
+  const { max, min } = useContext(FilterDataContext);
   let isTitleMarket = title.toLowerCase() === "market" ? true : false;
   let cards = isTitleMarket ? market : myCards;
 
   const [filterType, setFilterType] = useState();
-  //let filteredMarket = cards;
-  let filteredMyCards = cards;
 
-  const [filteredMarket, setfilteredMarket] = useState(cards);
+  const [filteredMarket, setFilteredMarket] = useState(market);
+  const [filteredMyCards, setFilteredMyCards] = useState(myCards);
+
+  const [activePage, setActivePage] = useState(0);
 
   useEffect(() => {
+    setActivePage(0);
     if (isTitleMarket) {
-      setfilteredMarket(
-        cards.filter(({ cardType, position }) => {
-          return filterType ? cardType.includes(filterType) || position.includes(filterType) : true;
+      setFilteredMarket(
+        cards.filter(({ cardType, position, price }) => {
+          return filterType
+            ? cardType.includes(filterType) || (position.includes(filterType) && price < max && price > market)
+            : true;
         })
       );
     } else {
-      filteredMyCards = cards.filter(({ cardType, position }) => {
-        return filterType ? cardType.includes(filterType) || position.includes(filterType) : true;
-      });
+      setFilteredMyCards(
+        cards.filter(({ cardType, position, price }) => {
+          return filterType
+            ? cardType.includes(filterType) || (position.includes(filterType) && price < max && price > market)
+            : true;
+        })
+      );
     }
   }, [filterType]);
-  const [pagedMarket, setPagedMarket] = useState(filteredMarket.slice(0, 10));
-  const [pagedMyCards, setPagedMyCards] = useState(filteredMarket.slice(0, 10));
 
-  console.log(pagedMarket);
   return (
     <div className="card-list" id={title.toLowerCase() === "market" ? "market" : "myCards"}>
       <h4>{title}</h4>
@@ -41,21 +48,22 @@ function CardList({ title }) {
         <div className="right">
           <div className="cards df-row">
             {isTitleMarket &&
-              pagedMarket.map((card, index) => (
+              filteredMarket.slice(activePage * 10, activePage * 10 + 10).map((card, index) => (
                 <div className="card-container" key={index}>
                   <Card imgUrl={card.photoUrl} title={title} price={card.price} />
                 </div>
               ))}
             {!isTitleMarket &&
-              pagedMyCards.map((card, index) => (
+              filteredMyCards.slice(activePage * 10, activePage * 10 + 10).map((card, index) => (
                 <div className="card-container" key={index}>
                   <Card imgUrl={card.photoUrl} title={title} price={card.price} />
                 </div>
               ))}
           </div>
           <Pagination
+            setActivePage={setActivePage}
+            activePage={activePage}
             filtered={isTitleMarket ? filteredMarket : filteredMyCards}
-            setPageFilter={isTitleMarket ? setPagedMarket : setPagedMyCards}
           />
         </div>
       </div>

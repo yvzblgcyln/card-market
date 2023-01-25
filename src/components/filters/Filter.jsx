@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import "./filter.scss";
 import { HiArrowUp, HiArrowDown } from "react-icons/hi";
 import DataContext from "../../context/DataContext";
+import RangeSlider from "../rangeSlider/RangeSlider";
 
 function Filter({ setFilterType, title }) {
   const { market, myCards } = useContext(DataContext);
+
   let cards = title.toLowerCase() === "market" ? market : myCards;
 
   const [isCardTypeOpened, setCardTypeOpened] = useState(false);
@@ -68,7 +70,7 @@ function Filter({ setFilterType, title }) {
         </div>
         {isPriceOpened && (
           <div className="tab-list">
-            <input type="range" />
+            <RangeSlider />
           </div>
         )}
       </div>
