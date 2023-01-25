@@ -3,6 +3,7 @@ import { IoIosFootball } from "react-icons/io";
 import { BiWallet } from "react-icons/bi";
 import { useContext, useState } from "react";
 import DataContext from "../../context/DataContext";
+import { Link as SmoothScroll } from "react-scroll";
 
 function Navbar() {
   const { wallet } = useContext(DataContext);
@@ -14,20 +15,30 @@ function Navbar() {
         <div className="icon df-row ">
           <IoIosFootball /> FE FC
         </div>
-        <a
-          href="#myCards"
+        <SmoothScroll
+          to="myCards"
           className={selected === "myCards" ? "active" : ""}
+          spy={true}
+          smooth={true}
+          offset={-150}
+          duration={500}
+          style={{ cursor: "pointer" }}
           onClick={() => setSelected("myCards")}
         >
           MY CARDS
-        </a>
-        <a
-          href="#market"
+        </SmoothScroll>
+        <SmoothScroll
+          to="market"
           className={selected === "market" ? "active" : ""}
+          spy={true}
+          smooth={true}
+          offset={-150}
+          duration={500}
+          style={{ cursor: "pointer" }}
           onClick={() => setSelected("market")}
         >
           MARKET
-        </a>
+        </SmoothScroll>
       </div>
       <div className="wallet df-row">
         <BiWallet className="wallet-icon" />

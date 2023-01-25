@@ -7,9 +7,12 @@
   }
   .container {
     gap: 20px;
-    .cards {
-      gap: 25px;
-      flex-wrap: wrap;
+    .right {
+      width: 100%;
+      .cards {
+        gap: 25px;
+        flex-wrap: wrap;
+      }
     }
   }
 }
