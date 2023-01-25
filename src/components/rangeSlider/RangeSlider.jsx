@@ -1,13 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import FilterDataContext from "../../context/FilterDataContext";
 import "./rangeSlider.scss";
 
 function RangeSlider() {
-  const { max, min, setMax, setMin, setIsPriceFilter } = useContext(FilterDataContext);
-
-  useEffect(() => {
-    setIsPriceFilter(true);
-  }, [max, min]);
+  const { max, min, setMax, setMin } = useContext(FilterDataContext);
 
   return (
     <div className="range-slider">

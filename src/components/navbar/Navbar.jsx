@@ -7,7 +7,7 @@ import { Link as SmoothScroll } from "react-scroll";
 
 function Navbar() {
   const { wallet } = useContext(DataContext);
-  const [selected, setSelected] = useState("myCards");
+  //const [selected, setSelected] = useState("myCards");
 
   return (
     <div className="navbar df-row">
@@ -17,25 +17,25 @@ function Navbar() {
         </div>
         <SmoothScroll
           to="myCards"
-          className={selected === "myCards" ? "active" : ""}
+          //className={selected === "myCards" ? "active" : ""}
           spy={true}
           smooth={true}
           offset={-150}
           duration={500}
           style={{ cursor: "pointer" }}
-          onClick={() => setSelected("myCards")}
+          //onClick={() => setSelected("myCards")}
         >
           MY CARDS
         </SmoothScroll>
         <SmoothScroll
           to="market"
-          className={selected === "market" ? "active" : ""}
+          //className={selected === "market" ? "active" : ""}
           spy={true}
           smooth={true}
           offset={-150}
           duration={500}
           style={{ cursor: "pointer" }}
-          onClick={() => setSelected("market")}
+          //onClick={() => setSelected("market")}
         >
           MARKET
         </SmoothScroll>

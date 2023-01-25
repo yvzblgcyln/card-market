@@ -1,0 +1,129 @@
+.cardModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  font-size: 18px;
+  font-weight: 600;
+  .container {
+    width: 914px;
+    height: 860px;
+    background-color: white;
+    scale: 0.8;
+    position: relative;
+    .close {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      color: white;
+      font-size: 30px;
+      font-weight: 100;
+      cursor: pointer;
+    }
+    .img-area {
+      width: 100%;
+      background: linear-gradient(#a3873c, #e3d294);
+      height: 382px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 198px;
+        height: 286px;
+      }
+    }
+    .name-area {
+      padding: 20px;
+      justify-content: space-between;
+      align-items: center;
+      .name {
+        color: #e8282b;
+        font-weight: 800;
+        font-size: 24px;
+      }
+
+      .price-area {
+        background-color: #f2f4f5;
+        border-radius: 8px;
+        padding: 24px;
+        justify-content: space-between;
+        width: 421px;
+        align-items: center;
+        .price {
+          font-size: 24px;
+          font-weight: 800;
+        }
+        button {
+          width: 174px;
+          color: white;
+          border: none;
+          background-color: #e8282b;
+          padding: 16px;
+          border-radius: 8px;
+        }
+      }
+    }
+    .attributes {
+      background-color: #f2f4f5;
+      margin: 20px;
+      border-radius: 8px;
+
+      h4 {
+        font-size: 18px;
+        margin-left: 24px;
+        font-weight: 800;
+      }
+      .skills {
+        gap: 22px;
+        justify-content: center;
+        margin-bottom: 24px;
+        .skill-container {
+          border-radius: 8px;
+          width: 86px;
+          height: 64px;
+          background-color: white;
+          justify-content: center;
+          padding: 16px;
+          .skill-rating {
+            font-weight: 800;
+            font-size: 24px;
+
+            span {
+              font-weight: 400;
+              font-size: 18px;
+              color: #979c9e;
+            }
+          }
+        }
+      }
+    }
+    .team-area {
+      padding: 20px;
+      gap: 20px;
+      .right,
+      .left {
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #f2f4f5;
+        width: 421px;
+        .team {
+          font-weight: 900;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
