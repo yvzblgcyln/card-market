@@ -3,11 +3,11 @@ import ModalDataContext from "../../context/ModalDataContext";
 import "./cardModal.scss";
 
 function CardModal() {
-  const { selectedIndex, cards, setIsModalOpen } = useContext(ModalDataContext);
+  const { selectedIndex, cards, setIsModalOpen, isMarket } = useContext(ModalDataContext);
+
   let cardFilter = cards.filter(({ id }) => selectedIndex.toString() === id);
   let card = cardFilter[0];
-
-  let cardType = card && card.cardType;
+  let cardType = card.cardType;
   return (
     <div className="cardModal">
       {card && (
@@ -32,7 +32,8 @@ function CardModal() {
             </div>
             <div className="price-area df-row">
               <div className="price">&euro; {card.price}.00</div>
-              <button>Sell or buy</button>
+              {isMarket && <button>Buy</button>}
+              {!isMarket && <button>Sell</button>}
             </div>
           </div>
           <div className="attributes df-col">

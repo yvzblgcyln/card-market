@@ -37,7 +37,7 @@ function CardList({ title }) {
         })
       );
     }
-  }, [filterType, max, min]);
+  }, [filterType, max, min, myCards]);
 
   return (
     <div className="card-list" id={title.toLowerCase() === "market" ? "market" : "myCards"}>

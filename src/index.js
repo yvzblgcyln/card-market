@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { DataContextProvider } from "./context/DataContext";
 import { FilterDataContextProvider } from "./context/FilterDataContext";
 import { ModalDataContextProvider } from "./context/ModalDataContext";
+import { TradeModalContextProvider } from "./context/TradeModalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -11,7 +12,9 @@ root.render(
     <DataContextProvider>
       <FilterDataContextProvider>
         <ModalDataContextProvider>
-          <App />
+          <TradeModalContextProvider>
+            <App />
+          </TradeModalContextProvider>
         </ModalDataContextProvider>
       </FilterDataContextProvider>
     </DataContextProvider>

@@ -1,7 +1,7 @@
-import React from "react";
+import "./tradeModal.scss";
 
 function TradeModal() {
-  return <div>TradeModal</div>;
+  return <div className="trade-modal">TradeModal</div>;
 }
 
 export default TradeModal;
