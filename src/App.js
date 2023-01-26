@@ -7,10 +7,13 @@ import { useContext } from "react";
 import DataContext from "./context/DataContext";
 import CardModal from "./components/cardModal/CardModal";
 import ModalDataContext from "./context/ModalDataContext";
+import TradeModal from "./components/tradeModal/TradeModal";
+import TradeModalContext from "./context/TradeModalContext";
 
 function App() {
   const { getData } = useContext(DataContext);
   const { isModalOpen } = useContext(ModalDataContext);
+  const { isTradeOpen } = useContext(TradeModalContext);
 
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +30,7 @@ function App() {
           <CardList title="MY CARDS" />
           <CardList title="MARKET" />
           {isModalOpen && <CardModal />}
+          {isTradeOpen && <TradeModal />}
         </div>
       )}
     </div>

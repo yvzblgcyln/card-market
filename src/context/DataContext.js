@@ -7,6 +7,7 @@ export const DataContextProvider = ({ children }) => {
   const [myCards, setMyCards] = useState();
   const [wallet, setWallet] = useState();
   const [isMarket, setIsMarket] = useState(false);
+  const [selectedCardId, setSelectedCardId] = useState([]);
 
   const getData = async () => {
     try {
@@ -21,7 +22,18 @@ export const DataContextProvider = ({ children }) => {
     }
   };
 
-  const value = { setMyCards, isMarket, setIsMarket, market, myCards, wallet, setWallet, getData };
+  const value = {
+    selectedCardId,
+    setSelectedCardId,
+    setMyCards,
+    isMarket,
+    setIsMarket,
+    market,
+    myCards,
+    wallet,
+    setWallet,
+    getData,
+  };
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };
 export default DataContext;

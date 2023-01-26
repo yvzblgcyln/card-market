@@ -1,2 +1,53 @@
 .trade-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  font-size: 18px;
+  font-weight: 600;
+  .container {
+    width: 399px;
+    height: 239px;
+    background-color: white;
+    scale: 0.8;
+    position: relative;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: 800;
+    align-items: center;
+    gap: 24px;
+    .text {
+      margin-top: 24px;
+    }
+    .price {
+      margin-top: -20px;
+      color: #e8282b;
+    }
+    button {
+      cursor: pointer;
+      width: 351px;
+      height: 48px;
+      color: white;
+      background-color: #e8282b;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .cancel {
+      cursor: pointer;
+      color: #e8282b;
+      font-size: 16px;
+    }
+  }
+  .warning {
+    height: 184px;
+    gap: 40px;
+  }
 }

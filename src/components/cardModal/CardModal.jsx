@@ -1,13 +1,32 @@
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import ModalDataContext from "../../context/ModalDataContext";
+import TradeModalContext from "../../context/TradeModalContext";
 import "./cardModal.scss";
+import axios from "axios";
 
 function CardModal() {
-  const { selectedIndex, cards, setIsModalOpen, isMarket } = useContext(ModalDataContext);
+  const { selectedIndex, setIsModalOpen, isMarket } = useContext(ModalDataContext);
+  const { setTrade } = useContext(TradeModalContext);
 
-  let cardFilter = cards.filter(({ id }) => selectedIndex.toString() === id);
-  let card = cardFilter[0];
-  let cardType = card.cardType;
+  const [card, setCard] = useState();
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios(`http://challenge.vole.io/cards/${selectedIndex}`);
+        setCard(data);
+        console.log(card);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    getData();
+  }, []);
+
+  const isGoalkeeper = card && card.position === "Goalkeeper" ? true : false;
+  const cardType = card && card.cardType;
+
   return (
     <div className="cardModal">
       {card && (
@@ -32,52 +51,55 @@ function CardModal() {
             </div>
             <div className="price-area df-row">
               <div className="price">&euro; {card.price}.00</div>
-              {isMarket && <button>Buy</button>}
-              {!isMarket && <button>Sell</button>}
+              {isMarket ? (
+                <button onClick={() => setTrade("buy")}>Buy</button>
+              ) : (
+                <button onClick={() => setTrade("sell")}>Sell</button>
+              )}
             </div>
           </div>
           <div className="attributes df-col">
             <h4>ATTRIBUTES</h4>
             <div className="skills df-row">
               <div className="skill-container df-col">
-                <div className="skill-title">Pace</div>
+                <div className="skill-title">{!isGoalkeeper ? "Pace" : "Diving"}</div>
                 <div className="skill-rating">
-                  {card.attributes.pace}
+                  {!isGoalkeeper ? card.attributes.pace : card.attributes.diving}
                   <span>/100</span>
                 </div>
               </div>
               <div className="skill-container df-col">
-                <div className="skill-title">Shooting</div>
+                <div className="skill-title">{!isGoalkeeper ? "Shooting" : "Handling"}</div>
                 <div className="skill-rating">
-                  {card.attributes.shooting}
+                  {!isGoalkeeper ? card.attributes.shooting : card.attributes.handling}
                   <span>/100</span>
                 </div>
               </div>
               <div className="skill-container df-col">
-                <div className="skill-title">Passing</div>
+                <div className="skill-title">{!isGoalkeeper ? "Passing" : "Kicking"}</div>
                 <div className="skill-rating">
-                  {card.attributes.passing}
+                  {!isGoalkeeper ? card.attributes.passing : card.attributes.kicking}
                   <span>/100</span>
                 </div>
               </div>
               <div className="skill-container df-col">
-                <div className="skill-title">Dribbling</div>
+                <div className="skill-title">{!isGoalkeeper ? "Dribbling" : "Reflexes"}</div>
                 <div className="skill-rating">
-                  {card.attributes.dribbling}
+                  {!isGoalkeeper ? card.attributes.dribbling : card.attributes.reflexes}
                   <span>/100</span>
                 </div>
               </div>
               <div className="skill-container df-col">
-                <div className="skill-title">Defending</div>
+                <div className="skill-title">{!isGoalkeeper ? "Defending" : "Speed"}</div>
                 <div className="skill-rating">
-                  {card.attributes.defending}
+                  {!isGoalkeeper ? card.attributes.defending : card.attributes.speed}
                   <span>/100</span>
                 </div>
               </div>
               <div className="skill-container df-col">
-                <div className="skill-title">Physical</div>
+                <div className="skill-title">{!isGoalkeeper ? "Physical" : "Positioning"}</div>
                 <div className="skill-rating">
-                  {card.attributes.physical}
+                  {!isGoalkeeper ? card.attributes.physical : card.attributes.positioning}
                   <span>/100</span>
                 </div>
               </div>

@@ -9,8 +9,8 @@ import FilterDataContext from "../../context/FilterDataContext";
 function CardList({ title }) {
   const { market, myCards } = useContext(DataContext);
   const { max, min } = useContext(FilterDataContext);
-  let isTitleMarket = title.toLowerCase() === "market" ? true : false;
-  let cards = isTitleMarket ? market : myCards;
+  const isTitleMarket = title.toLowerCase() === "market" ? true : false;
+  const cards = isTitleMarket ? market : myCards;
 
   const [filterType, setFilterType] = useState();
   const [filteredMarket, setFilteredMarket] = useState(market);
