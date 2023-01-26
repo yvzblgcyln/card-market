@@ -1,3 +1,3 @@
 # card market web app
 
-demo : https://shrill-nutt.surge.sh/
+demo : http://card-market.surge.sh/
