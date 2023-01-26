@@ -2,11 +2,13 @@
   margin: 122px 40px 0 40px;
   background-color: #f2f4f5;
   padding: 0 24px;
-
-  h4 {
+  &:last-child {
+    margin-bottom: 108px;
   }
+
   .container {
     gap: 20px;
+
     .right {
       width: 100%;
       .cards {
