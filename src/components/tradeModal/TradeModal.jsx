@@ -11,7 +11,8 @@ function TradeModal() {
   const { selectedIndex } = useContext(ModalDataContext);
   const { market, wallet, setWallet, setMyCards, myCards } = useContext(DataContext);
 
-  const price = market[selectedIndex].price;
+  const card = market.filter(({ id }) => id === selectedIndex)[0];
+  const price = card.price;
 
   const handleSell = () => {
     setWallet(wallet + price);
@@ -25,7 +26,8 @@ function TradeModal() {
       setDuplicated(true);
     } else if (wallet - price >= 0) {
       setWallet(wallet - price);
-      setMyCards((prev) => [...prev, market[selectedIndex]]);
+      setMyCards((prev) => [...prev, card]);
+      console.log(card);
       setIsTradeOpen(false);
     } else {
       setWarning(true);
