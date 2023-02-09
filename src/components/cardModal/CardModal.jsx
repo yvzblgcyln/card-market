@@ -16,7 +16,6 @@ function CardModal() {
       try {
         const { data } = await axios(`http://challenge.vole.io/cards/${selectedIndex}`);
         setCard(data);
-        console.log(card);
       } catch (error) {
         console.log("error", error);
       }

@@ -1,7 +1,7 @@
 import "./navbar.scss";
 import { IoIosFootball } from "react-icons/io";
 import { BiWallet } from "react-icons/bi";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import DataContext from "../../context/DataContext";
 import { Link as SmoothScroll } from "react-scroll";
 

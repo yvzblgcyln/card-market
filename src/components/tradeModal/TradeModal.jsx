@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import DataContext from "../../context/DataContext";
 import ModalDataContext from "../../context/ModalDataContext";
 import TradeModalContext from "../../context/TradeModalContext";
@@ -11,7 +11,8 @@ function TradeModal() {
   const { selectedIndex } = useContext(ModalDataContext);
   const { market, wallet, setWallet, setMyCards, myCards } = useContext(DataContext);
 
-  const card = market.filter(({ id }) => id === selectedIndex)[0];
+  const card =
+    market.filter(({ id }) => id === selectedIndex)[0] || myCards.filter(({ id }) => id === selectedIndex)[0];
   const price = card.price;
 
   const handleSell = () => {
@@ -27,7 +28,6 @@ function TradeModal() {
     } else if (wallet - price >= 0) {
       setWallet(wallet - price);
       setMyCards((prev) => [...prev, card]);
-      console.log(card);
       setIsTradeOpen(false);
     } else {
       setWarning(true);
